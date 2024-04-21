@@ -3,6 +3,7 @@ import styles from "./MoviesList.module.scss";
 import type { IMoviesListProps } from "./IMoviesListProps";
 import { escape } from "@microsoft/sp-lodash-subset";
 import "../../../../assets/dist/tailwind.css";
+import { getMovieList } from "../../../services/fetch";
 
 const MovieList: React.FC = ({
   description,
@@ -11,6 +12,13 @@ const MovieList: React.FC = ({
   hasTeamsContext,
   userDisplayName,
 }: React.PropsWithChildren<IMoviesListProps>) => {
+  React.useEffect(() => {
+    console.log(getMovieList({ paths: ["movies", "popular"] }));
+  }, []);
+  React.useEffect(() => {
+    console.log("teste");
+  }, []);
+
   return (
     <section
       className={`${styles.moviesList} ${hasTeamsContext ? styles.teams : ""}`}
@@ -25,10 +33,11 @@ const MovieList: React.FC = ({
           }
           className={styles.welcomeImage}
         />
+        <button onClick={() => console.log("teste")}>TESTE</button>
         <h2>Well done, {escape(userDisplayName)}!</h2>
         <div>{environmentMessage}</div>
         <div>
-          Web part property value: <strong>{escape(description)}</strong>
+          Tste - Web part property value: <strong>{escape(description)}</strong>
         </div>
       </div>
       <div>
