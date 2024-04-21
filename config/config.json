@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "movies-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/moviesList/MoviesListWebPart.js",
+          "manifest": "./src/webparts/moviesList/MoviesListWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MoviesListWebPartStrings": "lib/webparts/moviesList/loc/{locale}.js"
+  }
+}
