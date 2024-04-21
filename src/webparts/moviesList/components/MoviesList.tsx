@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./MoviesList.module.scss";
 import type { IMoviesListProps } from "./IMoviesListProps";
 import { escape } from "@microsoft/sp-lodash-subset";
-import "../../../assets/dist/tailwind.css";
+import "../../../../assets/dist/tailwind.css";
 
 export default class MoviesList extends React.Component<IMoviesListProps, {}> {
   public render(): React.ReactElement<IMoviesListProps> {
