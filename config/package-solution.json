@@ -3,7 +3,7 @@
   "solution": {
     "name": "movie-search-client-side-solution",
     "id": "c2866c14-0510-463f-a658-087bb8011b74",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
