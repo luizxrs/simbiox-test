@@ -4,19 +4,26 @@ import type { IMoviesListProps } from "./IMoviesListProps";
 import { escape } from "@microsoft/sp-lodash-subset";
 import "../../../../assets/dist/tailwind.css";
 import { getMovieList } from "../../../services/fetch";
+import { AxiosError } from "axios";
 
-const MovieList: React.FC = ({
+const MovieList: React.ReactNode = ({
   description,
   isDarkTheme,
   environmentMessage,
   hasTeamsContext,
   userDisplayName,
 }: React.PropsWithChildren<IMoviesListProps>) => {
+  const [movies, setMovies] = React.useState<unknown>();
+
   React.useEffect(() => {
-    console.log(getMovieList({ paths: ["movies", "popular"] }));
-  }, []);
-  React.useEffect(() => {
-    console.log("teste");
+    console.log(
+      getMovieList({ paths: ["movie", "popular"] })
+        .then((res) => setMovies(res))
+        .catch((e): AxiosError => {
+          setMovies(e);
+          throw new Error(`Erro! -> ${e}`);
+        })
+    );
   }, []);
 
   return (
@@ -33,11 +40,31 @@ const MovieList: React.FC = ({
           }
           className={styles.welcomeImage}
         />
-        <button onClick={() => console.log("teste")}>TESTE</button>
+        <button onClick={() => console.log(movies)}>TESTE</button>
+        <button
+          onClick={() =>
+            getMovieList({ paths: ["movie", "popular"] })
+              .then((res) => console.log(res))
+              .catch((e) => {
+                console.log(`Erro! -> ${e}`);
+              })
+          }
+        >
+          Fetch again
+        </button>
         <h2>Well done, {escape(userDisplayName)}!</h2>
         <div>{environmentMessage}</div>
         <div>
-          Tste - Web part property value: <strong>{escape(description)}</strong>
+          Web part property value: <strong>{escape(description)}</strong>
+        </div>
+        <div>
+          Current Time:
+          <strong>
+            {(() => {
+              const date = new Date();
+              return `${date.getMinutes()}:${date.getSeconds()}`;
+            })()}
+          </strong>
         </div>
       </div>
       <div>
