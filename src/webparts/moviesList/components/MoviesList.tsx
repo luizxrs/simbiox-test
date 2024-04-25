@@ -6,13 +6,17 @@ import "../../../../assets/dist/tailwind.css";
 import { getMovieList } from "../../../services/fetch";
 import { AxiosError } from "axios";
 
-const MovieList: React.ReactNode = ({
-  description,
-  isDarkTheme,
-  environmentMessage,
-  hasTeamsContext,
-  userDisplayName,
-}: React.PropsWithChildren<IMoviesListProps>) => {
+export default function MovieList(
+  props: IMoviesListProps
+): React.ReactElement<React.PropsWithChildren<IMoviesListProps>> {
+  const {
+    description,
+    isDarkTheme,
+    environmentMessage,
+    hasTeamsContext,
+    userDisplayName,
+  } = props;
+
   const [movies, setMovies] = React.useState<unknown>();
 
   React.useEffect(() => {
@@ -136,6 +140,4 @@ const MovieList: React.ReactNode = ({
       </div>
     </section>
   );
-};
-
-export default MovieList;
+}
