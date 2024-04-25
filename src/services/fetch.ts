@@ -10,7 +10,6 @@ export async function getMovieList({
   paths?: string[];
   query?: { [key: string]: string }[];
 }): Promise<unknown> {
-  console.log(API_TOKEN);
   const fullRoute: string[] = [];
   const base = `https://api.themoviedb.org/3`;
   const path = paths?.join("/");
