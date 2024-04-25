@@ -45,4 +45,26 @@ const tailwindcss = build.subTask(
 );
 build.rig.addPreBuildTask(tailwindcss);
 
+const gulp = require("gulp");
+const babel = require("gulp-babel");
+gulp.task("build", function () {
+  const babelCfg = {
+    plugins: [
+      [
+        "babel-plugin-module-resolver",
+        {
+          root: ["./src"],
+          alias: { "@": "./src" },
+          loglevel: "silent",
+        },
+      ],
+    ],
+  };
+
+  return gulp
+    .src("src/index.tsx") // Adjust the entry file as per your project
+    .pipe(babel(babelCfg)) // Apply babel transformation
+    .pipe(gulp.dest("dist/")); // Adjust the output directory as per your project
+});
+
 build.initialize(require("gulp"));

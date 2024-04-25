@@ -2,8 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import React from "react";
 
 import "swiper/css";
-import { getPopular } from "../../../../../types/fetch/getPopular";
-import { getPoster } from "../../../../../lib/get/getPoster";
+import { getPopular } from "@/types/fetch/getPopular";
+import { getPoster } from "@/lib/get/getPoster";
 
 interface ISwiperComponent {
   data: getPopular;

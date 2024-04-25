@@ -14,6 +14,11 @@
     "allowSyntheticDefaultImports": true,
     "inlineSources": false,
     "noImplicitAny": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    },
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
